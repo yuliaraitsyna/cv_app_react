@@ -29,7 +29,7 @@ function ExperienceSection() {
     };
 
     const deleteClick = (id) => {
-        setForms(prevForms => prevForms.filter(form => form.id !== id));
+        setForms(prev => prev.filter(form => form.id !== id));
     };
 
     return (

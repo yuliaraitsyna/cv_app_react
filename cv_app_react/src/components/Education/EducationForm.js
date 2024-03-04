@@ -1,41 +1,46 @@
 
 import { useState } from "react"
 
-function EducationForm() {
+function EducationForm({ onDelete, id }) {
+    const deleteClick = () => {
+        onDelete(id)
+    }
     return (
-        <form class="education-form">
-            <input type="date" placeholder="Start" required></input>
-            <input type="date" placeholder="End"></input>
-            <input type="text" placeholder="University" required></input>
-            <select id="degree-select" required>
-                <option class="degree">Undergraduate</option>
-                <option class="degree">Bachelor's degree</option>
-                <option class="degree">Master's degree</option>
-                <option class="degree">Doctoral degree</option>
-                <option class="degree">Other</option>
-            </select>
-            <div class="btn-container">
+        <div class="education-form">
+            <form>
+                <input type="date" placeholder="Start" required></input>
+                <input type="date" placeholder="End"></input>
+                <input type="text" placeholder="University" required></input>
+                <select id="degree-select" required>
+                    <option class="degree">Undergraduate</option>
+                    <option class="degree">Bachelor's degree</option>
+                    <option class="degree">Master's degree</option>
+                    <option class="degree">Doctoral degree</option>
+                    <option class="degree">Other</option>
+                </select>
                 <button type="submit">Add</button>
-                <button>Delete</button>
-            </div>
-        </form>
+            </form>
+            <button onClick={deleteClick}>Delete</button>
+        </div>
     )
 }
 
 function EducationSection() {
-    const [forms, setForms] = useState([<EducationForm key={0}/>])
+    const [forms, setForms] = useState([{ id: 0 }])
 
     const addClick = () => {
-        setForms(prev => [...prev, <EducationForm key={prev.length}/>])
+        setForms(prev => [...prev, { id: prev.length }])
+    }
+
+    const deleteClick = (id) => {
+        setForms(prev => prev.filter(form => form.id !== id ))
     }
 
     return (
         <div class="education-section">
             Education
-            {forms.map((form, index) => (
-                <div key={index}>
-                    {form}
-                </div>
+            {forms.map((form) => (
+                <EducationForm onDelete={deleteClick} key={form.id} id={form.id}/>
             ))}
             <button id="add-education-btn" onClick={addClick}>Add</button>
         </div>

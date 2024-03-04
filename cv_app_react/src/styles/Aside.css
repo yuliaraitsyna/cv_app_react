@@ -1,10 +1,24 @@
 .aside {
+    display: flex;
+    flex-direction: column;
+    gap:4vh;
     height:fit-content;
-    width:20vw;
+    width:23vw;
+    padding:1vw;
     background-color: brown;
 }
 
-.education-section, .experience-section {
+.education-section, .experience-section, .personal-section {
+    display: flex;
+    flex-direction:column;
+    gap:2vh;
     height:fit-content;
-    background-color: blanchedalmond;
+    background-color: whitesmoke;
+    border:none;
+    border-radius: 5px;
+    padding:5px;
+}
+
+input {
+    width:90%;
 }

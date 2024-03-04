@@ -3,3 +3,8 @@
     width:20vw;
     background-color: brown;
 }
+
+.education-section, .experience-section {
+    height:fit-content;
+    background-color: blanchedalmond;
+}

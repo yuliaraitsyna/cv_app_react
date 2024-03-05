@@ -3,22 +3,55 @@
     flex-direction: column;
     gap:4vh;
     height:fit-content;
-    width:23vw;
-    padding:1vw;
-    background-color: brown;
+    width:150px;
+    padding:5px;
 }
 
 .education-section, .experience-section, .personal-section {
     display: flex;
     flex-direction:column;
+    align-items: center;
     gap:2vh;
     height:fit-content;
-    background-color: whitesmoke;
+    background-color: rgb(231, 231, 231);
     border:none;
     border-radius: 5px;
     padding:5px;
+    box-shadow: 5px 5px 5px rgba(192, 192, 192, 0.626);
 }
 
-input {
-    width:90%;
+.education-section > div, .experience-section > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+}
+
+input, select, button {
+    width:100px;
+    margin:0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+    width:130px;
+}
+
+button {
+    color:white;
+    background-color: rgb(37, 95, 255);
+    border:none;
+    border-radius: 5px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.clear-btn-container > button {
+    width:100%;
+    height:25px;
 }

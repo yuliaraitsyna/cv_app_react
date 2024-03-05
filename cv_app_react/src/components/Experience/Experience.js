@@ -34,7 +34,7 @@ function ExperienceSection() {
 
     return (
         <div className="experience-section">
-            <h2>Experience</h2>
+            <h3>Experience</h3>
             {forms.map((form) => (
                 <ExperienceForm onDelete={deleteClick} key={form.id} id={form.id} />
             ))}

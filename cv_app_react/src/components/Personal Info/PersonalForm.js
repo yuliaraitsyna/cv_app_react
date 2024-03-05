@@ -1,7 +1,7 @@
 export default function PersonalForm() {
     return (
         <form class="personal-section">
-            Personal Info
+            <h3>Personal info</h3>
             <input type="text" placeholder="Name" required></input>
             <input type="text" placeholder="Surname" required></input>
             <input type="text" placeholder="Patronymic"></input>

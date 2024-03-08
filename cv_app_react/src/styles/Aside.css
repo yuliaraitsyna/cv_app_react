@@ -1,10 +1,89 @@
 .aside {
+    display: flex;
+    flex-direction: column;
+    gap:4vh;
     height:fit-content;
-    width:20vw;
-    background-color: brown;
+    width:150px;
 }
 
-.education-section, .experience-section {
+.education-section, .experience-section, .personal-section {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    gap:2vh;
     height:fit-content;
-    background-color: blanchedalmond;
+    background-color: rgb(231, 231, 231);
+    border:none;
+    border-radius: 5px;
+    padding:5px;
+    box-shadow: 5px 5px 5px rgba(192, 192, 192, 0.626);
+    width:100%;
+}
+
+.education-section > div, .experience-section > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+    width:100%;
+}
+
+input, select, button {
+    width:80%;
+    margin:0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+    width:100%;
+}
+
+button {
+    color:white;
+    background-color: rgb(37, 95, 255);
+    border:none;
+    border-radius: 5px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.clear-btn-container > button {
+    margin-top: 15%;
+    width:calc(100% + 10px);
+    height:25px;
+}
+
+@media(max-width:500px) {
+    .main{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .clear-btn-container{
+        width:100%;
+    }
+    form{
+        width:100%;
+    }
+    .aside{
+        order:2;
+        width:60%;
+    }
+    .resume-container{
+        order:1;
+        width:90%;
+        aspect-ratio: 0.7;
+        border:solid red;
+    }
+    .App{
+        padding:0;
+    }
+    .clear-btn-container > button {
+        width:100%;
+    }
 }

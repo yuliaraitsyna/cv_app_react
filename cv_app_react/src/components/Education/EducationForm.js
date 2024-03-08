@@ -38,7 +38,7 @@ function EducationSection() {
 
     return (
         <div class="education-section">
-            Education
+            <h3>Education</h3>
             {forms.map((form) => (
                 <EducationForm onDelete={deleteClick} key={form.id} id={form.id}/>
             ))}

@@ -1,46 +1,45 @@
-import React, { useState } from "react";
+export default class Experience {
+    #date_start
+    #date_end
+    #title
+    #about
 
-function ExperienceForm({ onDelete, id }) {
-    const deleteClick = () => {
-        onDelete(id);
-    };
+    constructor(date_start, date_end, title, about) {
+        this.#date_start = date_start
+        this.#date_end = date_end
+        this.#title = title
+        this.#about = about
+    }
 
-    return (
-        <div className="experience-form">
-            <form>
-                <input type="date" placeholder="Start" required />
-                <input type="date" placeholder="End" />
-                <input type="text" placeholder="Title" required />
-                <input type="text" placeholder="About" />
-                <div className="btn-container">
-                    <button type="submit">Add</button>
-                </div>
-            </form>
-            <button onClick={deleteClick}>Delete</button>
-        </div>
-    );
+    get date_start() {
+        return this.#date_start
+    }
+
+    get date_end() {
+        return this.#date_end
+    }
+
+    get title() {
+        return this.#title
+    }
+
+    get about() {
+        return this.#about
+    }
+
+    set date_start(date_start) {
+        this.#date_start = date_start
+    }
+
+    set date_end(date_end) {
+        this.#date_end = date_end
+    }
+
+    set title(title) {
+        this.#title = title
+    }
+
+    set about(about) {
+        this.#about = about
+    }
 }
-
-function ExperienceSection() {
-    const [forms, setForms] = useState([{ id: 0 }]);
-
-    const addClick = () => {
-        setForms(prev => [...prev, { id: prev.length }]);
-    };
-
-    const deleteClick = (id) => {
-        setForms(prev => prev.filter(form => form.id !== id));
-    };
-
-    return (
-        <div className="experience-section">
-            <h3>Experience</h3>
-            {forms.map((form) => (
-                <ExperienceForm onDelete={deleteClick} key={form.id} id={form.id} />
-            ))}
-            <button id="add-experience-btn" onClick={addClick}>Add</button>
-        </div>
-    );
-}
-
-export { ExperienceForm, ExperienceSection };

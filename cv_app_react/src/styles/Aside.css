@@ -25,10 +25,11 @@
     flex-direction: column;
     align-items: center;
     gap:5px;
+    width:100%;
 }
 
 input, select, button {
-    width:100px;
+    width:80%;
     margin:0;
 }
 
@@ -37,7 +38,7 @@ form {
     flex-direction: column;
     align-items: center;
     gap:5px;
-    width:130px;
+    width:100%;
 }
 
 button {
@@ -50,8 +51,10 @@ button {
 h3 {
     margin: 0;
 }
+
 .clear-btn-container > button {
-    width:160px;
+    margin-top: 15%;
+    width:calc(100% + 10px);
     height:25px;
 }
 
@@ -64,6 +67,9 @@ h3 {
     .clear-btn-container{
         width:100%;
     }
+    form{
+        width:100%;
+    }
     .aside{
         order:2;
         width:60%;
@@ -73,10 +79,6 @@ h3 {
         width:90%;
         aspect-ratio: 0.7;
         border:solid red;
-    }
-    input, select, button {
-        width:80%;
-        margin:0;
     }
     .App{
         padding:0;

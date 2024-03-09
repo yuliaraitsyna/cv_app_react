@@ -1,4 +1,4 @@
-import "../styles/Resume.css"
+import "../../styles/Resume.css"
 
  export default function Resume(data) {
     return (
@@ -11,10 +11,10 @@ import "../styles/Resume.css"
                     <p id="phone-number">{data.phone_number}</p>
                 </div>
                 <div id="education-section">
-                   <h1>Education</h1> 
+                   <h2>Education</h2> 
                 </div>
                 <div id="experience-section">
-                   <h1>Experience</h1> 
+                   <h2>Experience</h2> 
                 </div>
             </div>
         </div>

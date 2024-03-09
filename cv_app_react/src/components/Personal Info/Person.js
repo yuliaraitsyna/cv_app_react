@@ -1,4 +1,7 @@
-export default class Person {
+import Education from "../Education/Education"
+import Experience from "../Experience/Experience"
+
+class Person {
     #surname
     #name
     #patronymic
@@ -86,3 +89,23 @@ export default class Person {
 
 }
 
+
+let data = new Person (
+    "Raitsyna",
+    "Yulia",
+    "Alexandrovna",
+    "yuliaraitsyna@gmail.com",
+    "+375447005824",
+    "Minsk",
+    new Education(
+        "01-09-2022",
+        "01-07-2026",
+        "BSU",
+        "Bachelor's"
+    ),
+    new Experience(
+
+    )
+)
+
+export {Person, data}

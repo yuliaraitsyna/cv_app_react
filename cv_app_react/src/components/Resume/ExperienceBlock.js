@@ -3,7 +3,7 @@ import React from "react"
 export default function ExperienceBlock({experience}) {
     return(
         <div>
-            <h2>{experience.title}</h2>
+            <h3>{experience.title}</h3>
             <p>{experience.date_start} - {experience.date_end}</p>
             <p>{experience.about}</p>
         </div>

@@ -2,19 +2,19 @@ import Education from "../Education/Education"
 import Experience from "../Experience/Experience"
 
 class Person {
-    #surname
-    #name
-    #patronymic
-    #email
-    #phone_number
-    #location
+    #surname = ""
+    #name = ""
+    #patronymic = ""
+    #email = ""
+    #phone_number = ""
+    #location = ""
     #education = []
     #experience = []
 
     constructor(surname, name, patronymic, email, phone_number, location, education, experience) {
         this.#surname = surname
         this.#name = name
-        this.#patronymic = patronymic
+        this.#patronymic = patronymic || ""
         this.#email = email
         this.#phone_number = phone_number
         this.#location = location
@@ -22,8 +22,16 @@ class Person {
         this.#experience = experience
     }
 
-    get full_name() {
-        return `${this.#surname} ${this.#name} ${this.#patronymic}`
+    get name(){
+        return this.#name
+    }
+
+    get surname() {
+        return this.#surname
+    }
+
+    get patronymic() {
+        return this.#patronymic
     }
 
     get email() {
@@ -46,23 +54,14 @@ class Person {
         return this.#experience
     }
 
-    /**
-     * @param {string} surname
-     */
     set surname(surname) {
         this.#surname = surname
     }
 
-    /**
-     * @param {string} name
-     */
     set name(name) {
         this.#name = name
     }
 
-    /**
-     * @param {string} patronymic
-     */
     set patronymic(patronymic) {
         this.#patronymic = patronymic
     }
@@ -91,17 +90,17 @@ class Person {
 
 
 let data = new Person (
-    "Raitsyna",
-    "Yulia",
-    "Alexandrovna",
-    "yuliaraitsyna@gmail.com",
-    "+375447005824",
-    "Minsk",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
     new Education(
-        "01-09-2022",
-        "01-07-2026",
-        "BSU",
-        "Bachelor's"
+        "",
+        "",
+        "",
+        ""
     ),
     new Experience(
 

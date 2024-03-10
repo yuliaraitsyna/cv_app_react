@@ -1,26 +1,45 @@
 
 import { useState } from "react"
 
-function EducationForm({ onDelete, id }) {
+function EducationForm({ onDelete, id, onSubmit, initialData }) {
+    const [educationData, setEducationData] = useState({
+        date_start: initialData.date_start || "",
+        date_end: initialData.date_end || "",
+        university: initialData.university || "",
+        degree: initialData.degree || ""
+        ///see if working with array
+    })
+
+    const handleInputChange = (event) => {
+        const {name, value} = event.target
+        setEducationData(prev => ({
+            ...prev,
+            [name]: value.trim()
+        }))
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        onSubmit(educationData)
+    }
     const deleteClick = () => {
         onDelete(id)
     }
     return (
         <div class="education-form">
-            <form>
-                <input type="date" placeholder="Start" required></input>
-                <input type="date" placeholder="End"></input>
-                <input type="text" placeholder="University" required></input>
-                <select id="degree-select" required>
+            <form onClick={deleteClick}>
+                <input name="date_start" type="date" placeholder="Start" required onChange={handleInputChange}></input>
+                <input name="date_end" type="date" placeholder="End" onChange={handleInputChange}></input>
+                <input name="university" type="text" placeholder="University" required onChange={handleInputChange}></input>
+                <select name="degree" id="degree-select" required onChange={handleInputChange}>
                     <option class="degree">Undergraduate</option>
                     <option class="degree">Bachelor's degree</option>
                     <option class="degree">Master's degree</option>
                     <option class="degree">Doctoral degree</option>
                     <option class="degree">Other</option>
                 </select>
-                <button type="submit">Add</button>
+                <button type="submit" onClick={handleSubmit}>Add</button>
             </form>
-            <button onClick={deleteClick}>Delete</button>
+            <button>Delete</button>
         </div>
     )
 }

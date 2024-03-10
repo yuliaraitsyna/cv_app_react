@@ -13,9 +13,14 @@ import { useState } from 'react';
 function App() {
 
   const [personData, setPersonData] = useState(data)
+  const [educationData, setEducationData] = useState(data.education)
 
-  const handleSubmit = (updatedData) => {
+  const handlePersonSubmit = (updatedData) => {
       setPersonData(updatedData)
+  }
+
+  const handleEducationSubmit = (updatedData) => {
+    setEducationData(updatedData)
   }
 
   return (
@@ -24,8 +29,8 @@ function App() {
       <main class="main">
         <aside class="aside">
           <ClearButton/>
-          <PersonalForm initialData={personData} onSubmit={handleSubmit}/>
-          <EducationSection/>
+          <PersonalForm initialData={personData} onSubmit={handlePersonSubmit}/>
+          <EducationSection initialData={educationData} onSubmit={handleEducationSubmit}/>
           <ExperienceSection/>
         </aside>
         <Resume data = {personData}/>

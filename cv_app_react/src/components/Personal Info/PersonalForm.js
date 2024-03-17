@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PersonalForm({ onSubmit, initialData }) {
     const [data, setPersonalInfo] = useState({
-        name: initialData.name || "",
-        surname: initialData.surname || "",
-        patronymic: initialData.patronymic || "",
-        email: initialData.email || "",
-        phone_number: initialData.phone_number || "",
-        location: initialData.location || ""
+        name: "",
+        surname: "",
+        patronymic: "",
+        email: "",
+        phone_number: "",
+        location: ""
     });
     
+    useEffect(() => {
+        console.log("changed")
+    })
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setPersonalInfo(prev => ({

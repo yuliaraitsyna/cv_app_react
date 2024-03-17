@@ -3,13 +3,15 @@ import "./styles/Aside.css"
 import PersonalForm from './components/Personal Info/PersonalForm';
 import Resume from './components/Resume/Resume'
 import ClearButton from './components/Aside/ClearButton';
+import EducationForm from './components/Education/EducationForm.js'
 import {data} from "./components/Personal Info/Person.js"
 import { useState } from 'react';
+import EducationSection from './components/Education/EducationSection.js';
 
 
 function App() {
   const [personData, setPersonData] = useState(data)
-  console.log(personData.education)
+  console.log(personData)
   const handlePersonSubmit = (updatedData) => {
       setPersonData(updatedData)
   }
@@ -32,8 +34,11 @@ function App() {
           <ClearButton/>
 
           <PersonalForm 
-            initialData={personData} 
             onSubmit={handlePersonSubmit}
+          />
+
+          <EducationSection
+            onSubmit={handleEducationSubmit}
           />
           
         </aside>

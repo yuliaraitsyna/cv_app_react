@@ -1,69 +1,55 @@
+import { useState } from "react";
+import Education from "./Education";
 
-import { useState } from "react"
-
-function EducationForm({ onDelete, id, onSubmit, initialData }) {
-    const [educationData, setEducationData] = useState({
-        date_start: initialData.date_start || "",
-        date_end: initialData.date_end || "",
-        university: initialData.university || "",
-        degree: initialData.degree || ""
-        ///see if working with array
+export default function EducationForm({index, onSubmit}) {
+    const [educationObjData, setEducationObjData] = useState({
+        date_start: "",
+        date_end: "",
+        university: "",
+        degree: ""
     })
 
     const handleInputChange = (event) => {
+        event.preventDefault()
         const {name, value} = event.target
-        setEducationData(prev => ({
+
+        setEducationObjData(prev => ({
             ...prev,
             [name]: value.trim()
         }))
+
     }
-    const handleSubmit = (event) => {
+
+    const handleSubmitClick = (event) => {
         event.preventDefault()
-        onSubmit(educationData)
+
+        const newEducationObjData = new Education(
+            educationObjData.date_start,
+            educationObjData.date_end,
+            educationObjData.university,
+            educationObjData.degree
+        )
+
+        setEducationObjData(newEducationObjData)
+        onSubmit(index, newEducationObjData)
     }
-    const deleteClick = () => {
-        onDelete(id)
-    }
+
     return (
-        <div class="education-form">
-            <form onClick={deleteClick}>
+        <div className="education-form">
+            <form onSubmit={handleSubmitClick}>
                 <input name="date_start" type="date" placeholder="Start" required onChange={handleInputChange}></input>
                 <input name="date_end" type="date" placeholder="End" onChange={handleInputChange}></input>
                 <input name="university" type="text" placeholder="University" required onChange={handleInputChange}></input>
                 <select name="degree" id="degree-select" required onChange={handleInputChange}>
-                    <option class="degree">Undergraduate</option>
-                    <option class="degree">Bachelor's degree</option>
-                    <option class="degree">Master's degree</option>
-                    <option class="degree">Doctoral degree</option>
-                    <option class="degree">Other</option>
+                    <option>Undergraduate</option>
+                    <option>Bachelor's degree</option>
+                    <option>Master's degree</option>
+                    <option>Doctoral degree</option>
+                    <option>Other</option>
                 </select>
-                <button type="submit" onClick={handleSubmit}>Add</button>
+                <button type="submit">Submit</button>
             </form>
             <button>Delete</button>
         </div>
-    )
+    );
 }
-
-function EducationSection() {
-    const [forms, setForms] = useState([{ id: 0 }])
-
-    const addClick = () => {
-        setForms(prev => [...prev, { id: prev.length }])
-    }
-
-    const deleteClick = (id) => {
-        setForms(prev => prev.filter(form => form.id !== id ))
-    }
-
-    return (
-        <div class="education-section">
-            <h3>Education</h3>
-            {forms.map((form) => (
-                <EducationForm onDelete={deleteClick} key={form.id} id={form.id}/>
-            ))}
-            <button id="add-education-btn" onClick={addClick}>Add</button>
-        </div>
-    )
-}
-
-export { EducationForm, EducationSection }

@@ -1,39 +1,51 @@
-
 import './App.css';
 import "./styles/Aside.css"
 import PersonalForm from './components/Personal Info/PersonalForm';
 import Resume from './components/Resume/Resume'
-import { ExperienceSection } from './components/Experience/ExperienceForm';
-import { EducationSection } from './components/Education/EducationForm';
+import EducationSection from './components/Education/EducationSection.js';
 import ClearButton from './components/Aside/ClearButton';
 import {data} from "./components/Personal Info/Person.js"
 import { useState } from 'react';
 
 
 function App() {
-
   const [personData, setPersonData] = useState(data)
-  const [educationData, setEducationData] = useState(data.education)
-
+  console.log(personData)
   const handlePersonSubmit = (updatedData) => {
       setPersonData(updatedData)
   }
 
-  const handleEducationSubmit = (updatedData) => {
-    setEducationData(updatedData)
+  const handleSubmit = (updatedEducationData) => {
+    const updatedData = {
+      ...personData,
+      education: updatedEducationData
+    }
+    setPersonData(updatedData)
   }
+
 
   return (
     <div className="App">
-      <header class="header">Resume Creator</header>
-      <main class="main">
-        <aside class="aside">
+      <header className="header">Resume Creator</header>
+      <main className="main">
+        <aside className="aside">
+
           <ClearButton/>
-          <PersonalForm initialData={personData} onSubmit={handlePersonSubmit}/>
-          <EducationSection initialData={educationData} onSubmit={handleEducationSubmit}/>
-          <ExperienceSection/>
+
+          <PersonalForm 
+            initialData={personData} 
+            onSubmit={handlePersonSubmit}
+          />
+
+          <EducationSection 
+            educationArray={personData.education}
+            onSubmit={handleSubmit}
+          />
+
         </aside>
-        <Resume data = {personData}/>
+        <Resume 
+          data={personData}
+        />
       </main>
     </div>
   );

@@ -19,7 +19,7 @@ function ExperienceForm({ onDelete, id }) {
     );
 }
 
-function ExperienceSection() {
+function ExperienceSection({initaialData, onSubmit}) {
     const [forms, setForms] = useState([{ id: 0 }]);
 
     const addClick = () => {

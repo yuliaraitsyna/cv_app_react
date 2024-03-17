@@ -31,14 +31,22 @@ export default function EducationSection({ onSubmit }) {
         onSubmit(updatedData);
     }
 
+    function handleFormDeletion(id) {
+        setEducationForms(prevForms => prevForms.filter(form => form.id === id ))
+        setEducationData(prevData => prevData.filter((_, i) => i !== id));
+        onSubmit(educationData)
+    }
+
     return (
         <div id="education-section">
             <h3>Education</h3>
             {educationForms.map((form, index) => (
                 <EducationForm
+                    id={form.id}
                     key={form.id}
                     educationObj={form.education}
                     onSubmit={(data) => handleEducationFormSubmit(index, data)}
+                    onDelete={() => handleFormDeletion(form.id)}
                 />
             ))}
             <button onClick={handleAddition}>Add</button>

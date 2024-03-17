@@ -13,6 +13,7 @@ export default function Resume({ data }) {
           <p id="location">{data.location}</p>
         </div>
         <div id="education-section">
+          <h2>Education</h2>
           {data.education && data.education.length > 0 ? (
             data.education.map((education, index) => (
               <EducationBlock key={index} data={education} />

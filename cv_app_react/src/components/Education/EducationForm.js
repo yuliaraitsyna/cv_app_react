@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Education from "./Education";
 
-export default function EducationForm ({key, onSubmit}) {
+export default function EducationForm ({id, onSubmit, onDelete}) {
     const [educationData, setEducationData] = useState({
         date_start: "",
         date_end:"",
@@ -23,6 +23,9 @@ export default function EducationForm ({key, onSubmit}) {
         onSubmit(educationData)
     }
 
+    function handleDeletion() {
+        onDelete(id)
+    }
 
     return(
         <div class="education-form">
@@ -38,7 +41,7 @@ export default function EducationForm ({key, onSubmit}) {
                     <option class="degree">Other</option>
                 </select>
                 <button type="submit">Submit</button>
-                <button type="submit">Delete</button>
+                <button type="submit" onClick={handleDeletion}>Delete</button>
             </form>
         </div>
     )

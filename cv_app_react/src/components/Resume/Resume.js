@@ -7,7 +7,7 @@ export default function Resume({ data }) {
     <div className="resume-container">
       <div id="resume">
         <h1>Resume</h1>
-        <h3 id="full-name">{${data.surname} ${data.name} ${data.patronymic}}</h3>
+        <h3 id="full-name">{`${data.surname} ${data.name} ${data.patronymic}`}</h3>
         <div className="container">
           <p id="email">{data.email}</p>
           <p id="phone-number">{data.phone_number}</p>

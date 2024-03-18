@@ -3,10 +3,10 @@ import "./styles/Aside.css"
 import PersonalForm from './components/Personal Info/PersonalForm';
 import Resume from './components/Resume/Resume'
 import ClearButton from './components/Aside/ClearButton';
-import EducationForm from './components/Education/EducationForm.js'
 import {data} from "./components/Personal Info/Person.js"
 import { useState } from 'react';
 import EducationSection from './components/Education/EducationSection.js';
+import ExperienceSection from './components/Experience/ExperienceSection.js';
 
 
 function App() {
@@ -24,6 +24,13 @@ function App() {
     setPersonData(updatedData)
   }
 
+  const handleExperienceSubmit = (updatedExperienceData) => {
+    const updatedData = {
+      ...personData,
+      experience: updatedExperienceData
+    }
+    setPersonData(updatedData)
+  }
 
   return (
     <div className="App">
@@ -39,6 +46,10 @@ function App() {
 
           <EducationSection
             onSubmit={handleEducationSubmit}
+          />
+
+          <ExperienceSection
+            onSubmit={handleExperienceSubmit}
           />
           
         </aside>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ExperienceForm() {
+export default function ExperienceForm({id, onSubmit, onDelete}) {
     const [experienceData, setExperienceData] = useState({
         title: "",
         date_start: "",
@@ -19,10 +19,11 @@ export default function ExperienceForm() {
 
     function handleSubmit(event) {
         event.preventDefault()
+        onSubmit(experienceData)
     }
 
     function handleDeletion() {
-       
+       onDelete(id)
     }
 
     return (

@@ -1,5 +1,6 @@
 import "../../styles/Resume.css";
 import EducationBlock from "../Education/EducationBlock";
+import ExperienceBlock from "../Experience/ExperienceBlock";
 
 export default function Resume({ data }) {
   return (
@@ -24,6 +25,13 @@ export default function Resume({ data }) {
         </div>
         <div id="experience-section">
           <h2>Experience</h2>
+          {data.experience && data.experience.length > 0 ? (
+            data.experience.map((experience, index) => (
+              <ExperienceBlock key={index} data={experience} />
+            ))
+          ) : (
+            <p>No experience information available</p>
+          )}
         </div>
       </div>
     </div>

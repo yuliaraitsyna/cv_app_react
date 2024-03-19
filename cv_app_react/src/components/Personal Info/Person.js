@@ -1,4 +1,3 @@
-import Education from "../Education/Education";
 
 class Person {
     #surname = "";

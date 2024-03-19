@@ -35,9 +35,6 @@ export default class Education {
         this.#date_end = date_end
     }
 
-    /**
-     * @param {string} university
-     */
     set univerity(university) {
         this.#university= university
     }

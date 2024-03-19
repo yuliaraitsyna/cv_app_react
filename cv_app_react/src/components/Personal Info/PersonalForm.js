@@ -8,24 +8,20 @@ export default function PersonalForm({ onSubmit, initialData }) {
         email: "",
         phone_number: "",
         location: ""
-    });
-    
-    useEffect(() => {
-        console.log("changed")
     })
 
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
+        const { name, value } = event.target
         setPersonalInfo(prev => ({
             ...prev,
             [name]: value.trim()
-        }));
-    };
+        }))
+    }
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        onSubmit(data);
-    };
+        event.preventDefault()
+        onSubmit(data)
+    }
 
     return (
         <form className="personal-section" onSubmit={handleSubmit}>

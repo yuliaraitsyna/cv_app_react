@@ -34,7 +34,7 @@ export default function ExperienceForm({id, onSubmit, onDelete}) {
                 <input name="date_end" type="date" placeholder="End"></input>
                 <input name="about" type="text" placeholder="About"></input>
                 <button type="submit">Submit</button>
-                <button type="submit" onClick={handleDeletion}>Delete</button>
+                <button onClick={handleDeletion}>Delete</button>
             </form>
         </div>
     )

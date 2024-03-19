@@ -1,6 +1,7 @@
+
 import { useState } from "react";
 
-export default function ExperienceForm({id, onSubmit, onDelete}) {
+export default function ExperienceForm({id, onChange, onDelete}) {
     const [experienceData, setExperienceData] = useState({
         title: "",
         date_start: "",
@@ -9,17 +10,14 @@ export default function ExperienceForm({id, onSubmit, onDelete}) {
     })
 
     function handleChange(event) {
-        event.preventDefault()
         const {name, value} = event.target
+
         setExperienceData(prev => ({
             ...prev,
             [name]: value.trim()
         }))
-    }
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        onSubmit(experienceData)
+        onChange({...experienceData, [name]: value.trim()})
     }
 
     function handleDeletion() {
@@ -28,14 +26,11 @@ export default function ExperienceForm({id, onSubmit, onDelete}) {
 
     return (
         <div class="experience-form">
-            <form onSubmit={handleSubmit} onChange={handleChange}>
-                <input name="title" type="text" placeholder="Title" required></input>
-                <input name="date_start" type="date" placeholder="Start" required></input>
-                <input name="date_end" type="date" placeholder="End"></input>
-                <input name="about" type="text" placeholder="About"></input>
-                <button type="submit">Submit</button>
-                <button onClick={handleDeletion}>Delete</button>
-            </form>
+            <input name="title" type="text" placeholder="Title" required value={experienceData.title} onChange={handleChange}></input>
+            <input name="date_start" type="date" placeholder="Start" required value={experienceData.date_start} onChange={handleChange}></input>
+            <input name="date_end" type="date" placeholder="End" value={experienceData.date_end} onChange={handleChange}></input>                
+            <input name="about" type="text" placeholder="About" value={experienceData.about} onChange={handleChange}></input>
+            <button onClick={handleDeletion}>Delete</button>
         </div>
     )
 }

@@ -11,7 +11,8 @@ import ExperienceSection from './components/Experience/ExperienceSection.js';
 function App() {
   const [personData, setPersonData] = useState({ 
     ...data,
-    education: []
+    education: [],
+    experience: []
   });
   console.log("Initial personData:", personData);
 
@@ -21,10 +22,17 @@ function App() {
   }
 
   const handleEducationSubmit = (updatedEducationData) => {
-    console.log("Submitted education data:", updatedEducationData);
     const updatedData = {
       ...personData,
       education: updatedEducationData
+    }
+    setPersonData(updatedData);
+  }
+
+  const handleExperienceSubmit = (updatedExperienceData) => {
+    const updatedData = {
+      ...personData,
+      experience: updatedExperienceData
     }
     setPersonData(updatedData);
   }
@@ -41,7 +49,9 @@ function App() {
           <EducationSection
             onSubmit={handleEducationSubmit}
           />
-          <ExperienceSection />
+          <ExperienceSection 
+            onSubmit={handleExperienceSubmit}
+          />
         </aside>
         <Resume 
           data={personData}

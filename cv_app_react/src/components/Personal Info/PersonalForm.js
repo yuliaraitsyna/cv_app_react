@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function PersonalForm({ onSubmit, initialData }) {
     const [data, setPersonalInfo] = useState({
@@ -12,6 +12,7 @@ export default function PersonalForm({ onSubmit, initialData }) {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
+        
         setPersonalInfo(prev => ({
             ...prev,
             [name]: value.trim()
@@ -20,6 +21,7 @@ export default function PersonalForm({ onSubmit, initialData }) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
         onSubmit(data)
     }
 

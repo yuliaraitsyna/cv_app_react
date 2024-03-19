@@ -1,12 +1,12 @@
 
 import React, { useState } from "react"
 import EducationForm from "./EducationForm"
-import Education from "./Education"
 
-export default function EducationSection({ onSubmit }) {
+export default function EducationSection({onSubmit}) {
     const [educationForms, setEducationForms] = useState([])
 
-    function handleAddition() {
+    function handleAddition(event) {
+        event.preventDefault()
         setEducationForms(prevForms => [
             ...prevForms,
             { id: educationForms.length, education: {
@@ -26,15 +26,14 @@ export default function EducationSection({ onSubmit }) {
         })
     }
 
-    function handleEducationFormDelete(id) {
+    function handleDelete(id) {
         setEducationForms(prevForms => prevForms.filter(form => form.id !== id))
     }
 
     function handleSubmit(event) {
         event.preventDefault()
         const submittedData = educationForms.map(form => form.education)
-        console.log(submittedData)
-        onSubmit(submittedData);
+        onSubmit(submittedData)
     }
 
     return (
@@ -45,7 +44,7 @@ export default function EducationSection({ onSubmit }) {
                     id={form.id}
                     key={form.id}
                     onChange={(data) => handleEducationFormChange(index, data)}
-                    onDelete={() => handleEducationFormDelete(form.id)}
+                    onDelete={() => handleDelete(form.id)}
                 />
             ))}
             <button onClick={handleAddition}>Add</button>

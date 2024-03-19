@@ -1,48 +1,45 @@
-import { useState } from "react";
-import Education from "./Education";
+// EducationForm.js
+import React, { useState } from "react";
+import Education from "./Education"
 
-export default function EducationForm ({id, onSubmit, onDelete}) {
+export default function EducationForm({ id, onChange, onDelete }) {
     const [educationData, setEducationData] = useState({
         date_start: "",
-        date_end:"",
+        date_end: "",
         university: "",
         degree: "Undergraduate"
-    })
+    });
 
     function handleChange(event) {
-        event.preventDefault()
-        const {name, value} = event.target
-        setEducationData(prev => ({
-            ...prev,
+        const { name, value } = event.target
+
+        setEducationData(prevData => ({
+            ...prevData,
             [name]: value.trim()
         }))
+
+        onChange({ ...educationData, [name]: value.trim() })
     }
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        onSubmit(educationData)
+    function handleDelete() {
+        onDelete(id);
     }
 
-    function handleDeletion() {
-        onDelete(id)
-    }
-
-    return(
-        <div class="education-form">
-            <form onChange={handleChange} onSubmit={handleSubmit}> 
-                <input name="date_start" type="date" placeholder="Start" required></input>
-                <input name="date_end" type="date" placeholder="End"></input>
-                <input name="university" type="text" placeholder="University" required></input>
-                <select name="degree" id="degree-select" required>
-                    <option class="degree">Undergraduate</option>
-                    <option class="degree">Bachelor's degree</option>
-                    <option class="degree">Master's degree</option>
-                    <option class="degree">Doctoral degree</option>
-                    <option class="degree">Other</option>
+    return (
+        <div className="education-form">
+            <div>
+                <input name="date_start" type="date" placeholder="Start" required value={educationData.date_start} onChange={handleChange} />
+                <input name="date_end" type="date" placeholder="End" value={educationData.date_end} onChange={handleChange} />
+                <input name="university" type="text" placeholder="University" required value={educationData.university} onChange={handleChange} />
+                <select name="degree" id="degree-select" required value={educationData.degree} onChange={handleChange}>
+                    <option value="Undergraduate">Undergraduate</option>
+                    <option value="Bachelor's degree">Bachelor's degree</option>
+                    <option value="Master's degree">Master's degree</option>
+                    <option value="Doctoral degree">Doctoral degree</option>
+                    <option value="Other">Other</option>
                 </select>
-                <button type="submit">Submit</button>
-                <button type="submit" onClick={handleDeletion}>Delete</button>
-            </form>
+                <button type="button" onClick={handleDelete}>Delete</button>
+            </div>
         </div>
-    )
+    );
 }

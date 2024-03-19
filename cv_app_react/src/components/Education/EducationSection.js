@@ -1,54 +1,55 @@
-import EducationForm from "./EducationForm";
-import { useState } from "react";
+
+import React, { useState } from "react"
+import EducationForm from "./EducationForm"
+import Education from "./Education"
 
 export default function EducationSection({ onSubmit }) {
-    const [educationData, setEducationData] = useState([])
     const [educationForms, setEducationForms] = useState([])
 
     function handleAddition() {
         setEducationForms(prevForms => [
-            ...prevForms, 
-            { id: prevForms.length, education: { date_start: "", date_end: "", university: "", degree: "" } }
-        ])
-
-        setEducationData(prev => [
-            ...prev,
-            { date_start: "", date_end: "", university: "", degree: "" }
+            ...prevForms,
+            { id: educationForms.length, education: {
+                date_start: "",
+                date_end: "",
+                university: "",
+                degree: "Undergraduate"
+            }}
         ])
     }
 
-    function handleEducationFormSubmit(index, data) {
-        setEducationForms(prev => {
-            const bufferForms = [...prev]
-            bufferForms[index].education = data
-            return bufferForms
+    function handleEducationFormChange(index, data) {
+        setEducationForms(prevForms => {
+            const updatedForms = [...prevForms]
+            updatedForms[index] = { ...updatedForms[index], education: data }
+            return updatedForms
         })
-
-        const updatedData = educationData.map((item, i) => (i === index ? data : item))
-        setEducationData(updatedData)
-
-        onSubmit(updatedData)
     }
 
-    function handleFormDeletion(id) {
-        setEducationForms(prevForms => prevForms.filter(form => form.id !== id ))
-        setEducationData(prevData => prevData.filter((_, i) => i !== id))
-        onSubmit(educationData)
+    function handleEducationFormDelete(id) {
+        setEducationForms(prevForms => prevForms.filter(form => form.id !== id))
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        const submittedData = educationForms.map(form => form.education)
+        console.log(submittedData)
+        onSubmit(submittedData);
     }
 
     return (
-        <div id="education-section">
+        <form onSubmit={handleSubmit} id="education-section">
             <h3>Education</h3>
             {educationForms.map((form, index) => (
                 <EducationForm
                     id={form.id}
                     key={form.id}
-                    educationObj={form.education}
-                    onSubmit={(data) => handleEducationFormSubmit(index, data)}
-                    onDelete={() => handleFormDeletion(form.id)}
+                    onChange={(data) => handleEducationFormChange(index, data)}
+                    onDelete={() => handleEducationFormDelete(form.id)}
                 />
             ))}
             <button onClick={handleAddition}>Add</button>
-        </div>
+            <button type="submit">Submit</button>
+        </form>
     );
 }

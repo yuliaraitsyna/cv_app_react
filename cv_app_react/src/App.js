@@ -43,7 +43,8 @@ function App() {
       <main className="main">
         <aside className="aside">
           <ClearButton/>
-          <PersonalForm 
+          <PersonalForm
+            initialData={data}
             onSubmit={handlePersonSubmit}
           />
           <EducationSection

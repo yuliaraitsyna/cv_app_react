@@ -2,9 +2,9 @@ import { useState } from "react";
 
 export default function PersonalForm({ onSubmit, initialData }) {
     const [data, setPersonalInfo] = useState({
-        name: "",
-        surname: "",
-        patronymic: "",
+        name: initialData.name || "",
+        surname: initialData.surname || "",
+        patronymic: initialData.patronymic || "",
         email: "",
         phone_number: "",
         location: ""
